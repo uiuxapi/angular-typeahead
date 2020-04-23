@@ -13,12 +13,14 @@ import { Color } from './models/Color';
 })
 export class AppComponent {
 
+  userinput: string = '';
+
   colorSearchTextInput = new FormControl()
 
   searchColors$ = new BehaviorSubject<string>('')
 
   colors$: Observable<string[]> = this.searchColors$.pipe(
-    debounceTime(3000),
+    debounceTime(1000),
     switchMap(searchColorText => {
       return this.httpClient.get<Color[]>('http://localhost:4250/colors?name_like=' + searchColorText)
     }),
@@ -28,7 +30,12 @@ export class AppComponent {
   constructor(private httpClient: HttpClient) {
   }
 
+
   doColorSearch() {
     this.searchColors$.next(this.colorSearchTextInput.value);
+  }
+
+  onSelected(color) {
+    !!color ? this.colorSearchTextInput.setValue(color) : this.colorSearchTextInput.setValue('');
   }
 }

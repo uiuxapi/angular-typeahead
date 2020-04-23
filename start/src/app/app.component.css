@@ -1,0 +1,21 @@
+.list-group {
+  border: 1px solid rgba(0,0,0,.125);
+  padding: 4px;
+  max-height: 350px;
+  overflow-x: scroll;
+  display: none;
+  height: 0px
+}
+
+.list-group:focus, .list-group:active, .list-group:hover  {
+  border: 1px solid #007bff;
+}
+
+
+.txtinput:focus ~ .list-group, .list-group:hover  {
+  display: block;
+  transition-delay: 2s;
+  outline: none;
+  height: 100%;
+  transform: height 2s linear;
+}

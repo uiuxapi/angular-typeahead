@@ -1,6 +1,10 @@
-<h1>Demo Application</h1>
+<div class="container">
+  <h1>Demo Application</h1>
 
-<input type="text" [formControl]="colorSearchTextInput" (input)="doColorSearch()">
-<ul>
-  <li *ngFor="let color of colors$ | async">{{ color }}</li>
-</ul>
+  <input class="txtinput" type="text" [formControl]="colorSearchTextInput" (input)="doColorSearch()">
+  <ul class="list-unstyled list-group">
+    <li style="cursor:pointer" class="list-item" *ngFor="let color of colors$ | async"
+      (click)="onSelected($event.target.innerHTML)">
+      {{ color }}</li>
+  </ul>
+</div>
