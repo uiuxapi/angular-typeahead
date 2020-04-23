@@ -63,7 +63,7 @@ Extract the downloaded archive file in the folder of your choice.
 npm install
 ```
 
-**Step 5.** Start the development web server for the React application. From a terminal window within the `start` folder, run the following command:
+**Step 5.** Start the development web server for the Angular application. From a terminal window within the `start` folder, run the following command:
 
 ```
 npm start
