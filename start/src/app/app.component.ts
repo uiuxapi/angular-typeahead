@@ -18,8 +18,9 @@ export class AppComponent {
   searchColors$ = new BehaviorSubject<string>('')
 
   colors$: Observable<string[]> = this.searchColors$.pipe(
+    debounceTime(3000),
     switchMap(searchColorText => {
-      return this.httpClient.get<Color[]>('http://localhost:4250/color?name_like=' + searchColorText)
+      return this.httpClient.get<Color[]>('http://localhost:4250/colors?name_like=' + searchColorText)
     }),
     map((colors: Color[]) => colors.map(color => color.name)),
   );
